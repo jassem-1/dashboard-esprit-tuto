@@ -32,6 +32,7 @@ function Members() {
         <IconButton style={{ color: 'white' }} onClick={handleVerifyAdmin}>
        Add <AddCircleOutlineIcon /> 
       </IconButton>
+      
       </GridToolbarContainer>
     );
   }
