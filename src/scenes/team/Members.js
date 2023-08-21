@@ -29,8 +29,8 @@ function Members() {
         <GridToolbarFilterButton  style={{ color: 'white' }} />
         <GridToolbarDensitySelector  style={{ color: 'white' }} />
         <GridToolbarExport   style={{ color: 'white' }}/ >
-        <IconButton style={{ color: 'white' }} onClick={handleVerifyAdmin}>
-       Add <AddCircleOutlineIcon /> 
+        <IconButton style={{ color: 'grey',fontSize:"small" }} onClick={handleVerifyAdmin}>
+       Add a member<AddCircleOutlineIcon /> 
       </IconButton>
       
       </GridToolbarContainer>
@@ -127,7 +127,7 @@ function Members() {
       }, []);
     
     const columns = [
-      { field: "id", headerName: "ID" },
+      
       {
         field: "name",
         headerName: "Name",

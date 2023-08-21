@@ -17,7 +17,6 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -32,6 +31,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     >
       <Typography>{title}</Typography>
       <Link to={to} />
+  
     </MenuItem>
   );
 };
@@ -52,7 +52,7 @@ function Sidebar() {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
+          padding: "5px 25px 5px 20px !important",
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -80,12 +80,8 @@ function Sidebar() {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
-                </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
+               
+              
               </Box>
             )}
           </MenuItem>
@@ -95,11 +91,15 @@ function Sidebar() {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
-                  width="200px"
-                  height="100px"
+                  width="130px"
+                  height="50px"
+               
                   src={`../../assets/esprit-logo.png`}
-                  style={{ cursor: "pointer", filter: "invert(1)"  }}
+                  style={{ cursor: "pointer", filter: "invert(1)" ,marginRight:"20px" }}
                 />
+                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                <MenuOutlinedIcon />
+              </IconButton>
               </Box>
          
             </Box>
@@ -129,8 +129,8 @@ function Sidebar() {
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
-              to="/contacts"
+              title="Teams"
+              to="/teams"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

@@ -10,7 +10,8 @@ import Members from "./scenes/team/Members";
 import Calendar from "./scenes/calendar/Calendar";
 //import Invoices from "./scenes/invoices";
 //import Contacts from "./scenes/contacts";
-//import Bar from "./scenes/bar";
+import BarPage from "./scenes/barChart/BarPage";
+import TeamsPage from "./scenes/team/TeamsPage";
 //import Form from "./scenes/form";
 //import Line from "./scenes/line";
 //import Pie from "./scenes/pie";
@@ -32,6 +33,9 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/members" element={<Members />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/bar" element={<BarPage />} />
+              <Route path="/teams" element={<TeamsPage />} />
+
 
 
 

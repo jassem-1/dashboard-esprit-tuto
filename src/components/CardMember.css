@@ -1,0 +1,88 @@
+.member-card {
+  position: relative;
+
+    width: 220px;
+    background-color: #8794aa;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 15px;
+    text-align: center;
+  }
+  /* Add this style to position the "X" button */
+.remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  background-color: #746767;
+  color: #ffffff;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  transition: all 0.3s; 
+}
+.remove-button:hover {
+  transform: scale(1.2); 
+}
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .rounded-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .name {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .tasks {
+    color: black;
+    font-size: 13px;
+  }
+  
+  .tasks h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .tasks ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tasks li {
+    margin-bottom: 5px;
+  }
+  
+  .show-more-button {
+    background-color: #5a6673;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .show-more-button:hover {
+    background-color: #0056b3;
+  }
+  .no-tasks-text{
+    font-weight: 600;
+  }

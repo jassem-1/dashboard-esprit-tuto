@@ -1,0 +1,24 @@
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Create 4 columns */
+    gap: 20px; /* Gap between columns and rows */
+  }
+  
+  .member-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .modal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .modal-paper {
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
