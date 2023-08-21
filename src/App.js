@@ -12,6 +12,7 @@ import Calendar from "./scenes/calendar/Calendar";
 //import Contacts from "./scenes/contacts";
 import BarPage from "./scenes/barChart/BarPage";
 import TeamsPage from "./scenes/team/TeamsPage";
+import ProjectsPage from "./scenes/projects/ProjectsPage";
 //import Form from "./scenes/form";
 //import Line from "./scenes/line";
 //import Pie from "./scenes/pie";
@@ -35,6 +36,7 @@ function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/bar" element={<BarPage />} />
               <Route path="/teams" element={<TeamsPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
 
 
 
