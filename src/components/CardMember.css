@@ -11,18 +11,18 @@
   /* Add this style to position the "X" button */
 .remove-button {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -20px;
+  right: -90px;
   cursor: pointer;
-  background-color: #746767;
-  color: #ffffff;
+
+  
   width: 15px;
   height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 10px;
   transition: all 0.3s; 
 }
 .remove-button:hover {

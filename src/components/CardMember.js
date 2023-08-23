@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./CardMember.css"
+import { IconButton,  Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 import { avatarImagePaths, loadAvatarImage } from '../utils/avatarImages';
 const CardMember = ({ userId , teamId }) => {
@@ -48,8 +51,9 @@ const CardMember = ({ userId , teamId }) => {
 
   return (
     <div className="member-card">
-    <button className="remove-button" onClick={handleRemoveMember}>X</button>
-
+    <IconButton  onClick={handleRemoveMember}>
+    <CloseIcon className="remove-button" />
+  </IconButton>
     <div className="image-container">
     <img className="rounded-image" src={randomAvatarSrc} alt="Profile" />
   </div>
