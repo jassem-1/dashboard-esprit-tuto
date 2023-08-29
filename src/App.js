@@ -13,6 +13,7 @@ import Calendar from "./scenes/calendar/Calendar";
 import BarPage from "./scenes/barChart/BarPage";
 import TeamsPage from "./scenes/team/TeamsPage";
 import ProjectsPage from "./scenes/projects/ProjectsPage";
+import ChatPage from "./scenes/chatroom/ChatPage";
 //import Form from "./scenes/form";
 //import Line from "./scenes/line";
 //import Pie from "./scenes/pie";
@@ -21,6 +22,7 @@ import ProjectsPage from "./scenes/projects/ProjectsPage";
 //import Calendar from "./scenes/calendar/calendar";
 
 function App() {
+
   const [theme,colorMode]=useMode();
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -37,11 +39,14 @@ function App() {
               <Route path="/bar" element={<BarPage />} />
               <Route path="/teams" element={<TeamsPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/chat" element={<ChatPage />} />
+
 
 
 
 
             </Routes>
+          
         </main>
         </div>
       </ThemeProvider>

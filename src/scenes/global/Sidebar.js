@@ -151,8 +151,8 @@ function Sidebar() {
               Pages
             </Typography>
             <Item
-              title="Profile Form"
-              to="/form"
+              title="ChatRoom"
+              to="/chat"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
