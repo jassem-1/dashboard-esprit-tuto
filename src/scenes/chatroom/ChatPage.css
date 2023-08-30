@@ -55,11 +55,17 @@ body {
   }
   
   .chat-content{
-    width:80%;
-    margin-left: 10px;
+    flex: 1;
+    overflow: hidden; /* Hide overflow to prevent scrollbar outside the chat box */
+    display: flex;
+    flex-direction: column;
+    position: relative
   }
   
   .chat-messages{
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling for the messages */
+    padding: 10px; 
     height: 80%;
     border: 1px solid #000;
   }

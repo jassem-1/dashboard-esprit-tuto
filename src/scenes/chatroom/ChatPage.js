@@ -6,6 +6,7 @@ import "./ChatPage.css"
 var stompClient = null;
 export default function Chatroom() {
   const [memberList, setMemberList] = useState([]);
+  const [joinedMembers, setJoinedMembers] = useState([]);
 
   const [privateChats, setPrivateChats] = useState(new Map());
   const [publicChats, setPublicChats] = useState([]);
@@ -34,12 +35,29 @@ export default function Chatroom() {
   };
 
 
-  const registerUser = () => {
-    console.log("Registering user...XXX");
-    let Sock=new SockJS("http://localhost:8080/ws");
+  const registerUser = async () => {
+    console.log("Registering user...");
+    let Sock = new SockJS("http://localhost:8080/ws");
     stompClient = over(Sock);
+  
+    try {
+      // Send a POST request to mark the user as joined
+      const response = await fetch(`http://localhost:8080/users/join-chatroom/${userData.username}`, {
+        method: "POST",
+      });
+  
+      if (response.ok) {
+        console.log("User joined successfully");
+      } else {
+        console.error("Failed to join user");
+      }
+    } catch (error) {
+      console.error("Error joining user:", error);
+    }
+  
     stompClient.connect({}, onConnected, onError);
   };
+  
 
   const onConnected = () => {
     console.log("WebSocket connection established!xxxxx");
@@ -51,14 +69,37 @@ export default function Chatroom() {
    };
 
 
-  const userJoin=()=>{
-    let chatMessage = {
-      senderName: userData.username,
-      status:"JOIN",
-      currentMembers: memberList,
-    };
-    stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
-}
+   const userJoin = () => {
+    if (!joinedMembers.includes(userData.username)) {
+      let chatMessage = {
+        senderName: userData.username,
+        status: "JOIN",
+        currentMembers: memberList,
+      };
+      stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
+      
+      // Update the joinedMembers state without modifying the existing list
+      setJoinedMembers((prevJoinedMembers) => [...prevJoinedMembers, userData.username]);
+    }
+  };
+  
+const onPublicMessageReceived = (payload) => {
+  let payloadData = JSON.parse(payload.body);
+  switch (payloadData.status) {
+    case "JOIN":
+      if (!privateChats.has(payloadData.senderName)) {
+        privateChats.set(payloadData.senderName, []);
+        setPrivateChats(new Map(privateChats));
+      }
+      setMemberList((prevList) => [...prevList, payloadData.senderName]);
+      break;
+    case "MESSAGE":
+      setPublicChats((prevChats) => [...prevChats, payloadData]);
+      break;
+    default:
+      break;
+  }
+};
 
 const onPrivateMessageReceived = (payload) => {
   try {
@@ -83,22 +124,35 @@ const onPrivateMessageReceived = (payload) => {
 };
 
 
-const onPublicMessageReceived = (payload) => {
-  let payloadData = JSON.parse(payload.body);
-  switch (payloadData.status) {
-    case "JOIN":
-      if (!privateChats.has(payloadData.senderName)) {
-        privateChats.set(payloadData.senderName, []);
-        setPrivateChats(new Map(privateChats));
+const sendPublicMessage = async () => {
+  if (stompClient) {
+    const chatMessage = {
+      senderName: userData.username,
+      message: userData.message,
+      status: "MESSAGE",
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chatMessage),
+      });
+
+      if (response.ok) {
+        console.log("Message sent successfully");
+        // Update the publicChats state with the new message
+        setPublicChats((prevChats) => [...prevChats, chatMessage]);
+      } else {
+        console.error("Failed to send message");
       }
-      
-      setMemberList((prevList) => [...prevList, payloadData.senderName]);
-      break;
-    case "MESSAGE":
-      setPublicChats((prevChats) => [...prevChats, payloadData]);
-      break;
-    default:
-      break;
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+
+    setUserData({ ...userData, message: "" });
   }
 };
 
@@ -108,18 +162,7 @@ const onError = (error) => {
   
 };
 
-  
-  const sendPublicMessage=()=>{
-    if (stompClient) {
-      var chatMessage = {
-        senderName: userData.username,
-        message: userData.message,
-        status:"MESSAGE"
-      };
-      stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
-      setUserData({...userData,"message": ""});
-    }
-}
+
 
 const sendPrivateMessage = () => {
   if (stompClient) {
@@ -145,6 +188,24 @@ const sendPrivateMessage = () => {
     setUserData({ ...userData, message: "" });
   }
 };
+useEffect(() => {
+  // Fetch member list, messages, and joined members from the backend API
+  Promise.all([
+    fetch("http://localhost:8080/users").then((response) => response.json()),
+    fetch("http://localhost:8080/messages").then((response) => response.json()),
+    fetch("http://localhost:8080/users/joined-members").then((response) => response.json()), // Fetch joined members
+  ])
+    .then(([members, messages, joinedMembers]) => {
+      const membersList = members.map((user) => user.username);
+      setMemberList(membersList);
+      setPublicChats(messages.filter((msg) => msg.status === "MESSAGE"));
+      
+      // Update the joinedMembers state with the joined members
+      setJoinedMembers(joinedMembers.map((user) => user.username));
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}, []);
+
 
 
   return (
@@ -156,11 +217,13 @@ const sendPrivateMessage = () => {
               <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>
                 Chatroom
               </li>
-              {[...privateChats.keys()].map((name, index) => (
-                <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>
+              {[...privateChats.keys(), ...joinedMembers].map((name, index) => (
+                <li onClick={() => setTab(name)} className={`member ${tab === name && "active"}`} key={index}>
                   {name}
                 </li>
               ))}
+              
+              
             </ul>
           </div>
           {tab==="CHATROOM" ? ( <div className="chat-content">
