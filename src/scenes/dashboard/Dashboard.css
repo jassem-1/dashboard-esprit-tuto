@@ -1,0 +1,14 @@
+/* Add your CSS styles here */
+.dashboard-container {
+    margin: 20px;
+  }
+  
+
+  
+  .pie-chart-container {
+    display: flex;
+  }
+  .small-pie-chart {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+  }
