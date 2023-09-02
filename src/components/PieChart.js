@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
-import { ArcElement, Chart } from 'chart.js';
-Chart.register(ArcElement);
+import { PieChart, Pie, Legend, Cell, Tooltip } from 'recharts';
 
-class PieChart extends Component {
+class MemberChart extends Component {
   state = {
     pieChartData: {},
   };
-
-  constructor(props) {
-    super(props);
-    this.fetchPieChartData = this.fetchPieChartData.bind(this);
-  }
 
   componentDidMount() {
     this.fetchPieChartData();
@@ -33,86 +26,54 @@ class PieChart extends Component {
   render() {
     const { pieChartData } = this.state;
 
-    const data = {
-      labels: [
-        'Users with tasks < 2',
-        'Users with tasks 3-5',
-        'Users with tasks > 5',
-        'Users assigned to teams',
-        'Users not assigned to teams',
-      ],
-      datasets: [
-        {
-          data: [
-            pieChartData.usersWithTasksBelow2,
-            pieChartData.usersWithTasksBetween3And5,
-            pieChartData.usersWithTasksAbove5,
-            pieChartData.usersAssignedToTeams,
-            pieChartData.usersNotAssignedToTeams,
-          ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(54, 162, 235, 0.7)',
-            'rgba(255, 206, 86, 0.7)',
-            'rgba(75, 192, 192, 0.7)',
-            'rgba(153, 102, 255, 0.7)',
-          ],
-        },
-      ],
-    };
+    const data = [
+      {
+        name: 'members with tasks < 2',
+        value: pieChartData.usersWithTasksBelow2,
+      },
+      {
+        name: 'members with tasks 3-5',
+        value: pieChartData.usersWithTasksBetween3And5,
+      },
+      {
+        name: 'members with tasks > 5',
+        value: pieChartData.usersWithTasksAbove5,
+      },
+      {
+        name: 'members assigned to teams',
+        value: pieChartData.usersAssignedToTeams,
+      },
+      {
+        name: 'members not assigned to teams',
+        value: pieChartData.usersNotAssignedToTeams,
+      },
+    ];
 
-  
-    const options = {
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: (tooltipItem, data) => {
-                const dataIndex = tooltipItem.index;
-                const value = data.datasets[0].data[dataIndex];
-                return `${data.labels[dataIndex]}: ${value}`;
-              },
-            },
-          },
-        },
-        legend: {
-          display: true,
-          position: 'bottom',
-        },
-      };
-  
-      const legendData = {
-        labels: data.labels,
-        datasets: [
-          {
-            backgroundColor: data.datasets[0].backgroundColor,
-          },
-        ],
-      };
+    const colors = ['#FF6361', '#BC5090', '#FFA600', '#003F5C', '#665191']; // Define custom colors
+
     return (
       <div>
-        <h2>Pie Chart</h2>
-        <Pie data={data}/>
-        <div style={{ flex: '1' }}>
-        <ul>
-          {legendData.labels.map((label, index) => (
-            <li key={index}>
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: '12px',
-                  height: '12px',
-                  backgroundColor: legendData.datasets[0].backgroundColor[index],
-                  marginRight: '6px',
-                }}
-              ></span>
-              {label}
-            </li>
-          ))}
-        </ul>
-      </div>
+        <PieChart width={400} height={400}>
+          <Pie
+            dataKey="value"
+            isAnimationActive={false}
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            label
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
       </div>
     );
   }
 }
 
-export default PieChart;
+export default MemberChart;
