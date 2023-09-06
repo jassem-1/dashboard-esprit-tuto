@@ -1,0 +1,133 @@
+/* Styles for the notes box */
+.notes-box {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Styles for the header */
+  .notes-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .notes-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Styles for the content container */
+  .notes-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+  }
+  
+  /* Styles for individual notes */
+  .note {
+    color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  /* Styles for the "Add Note" section */
+  .add-note {
+    margin-top: 10px;
+  }
+  
+  .add-note button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-note button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for the User Selection Dialog */
+  .user-dialog {
+    color: #333;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .user-dialog h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .user-dialog ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-dialog li {
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .user-dialog li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Styles for the Note Input Dialog */
+  .note-dialog {
+    color: #333;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .note-dialog h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .note-dialog input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .note-dialog button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .note-dialog button:hover {
+    background-color: #0056b3;
+  }
+  

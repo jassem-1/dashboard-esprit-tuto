@@ -8,9 +8,14 @@
   .pie-chart-container {
     display: flex;
     flex-direction: row;
-    background-color: antiquewhite;
+    background-color: rgba(172, 166, 214, 0.323);
+    border-radius: 15px;
   }
   
 .tasks-pie-container {
     margin-top: -3%;
   }
+  .first-row {
+    flex-direction: row;
+  }
+
