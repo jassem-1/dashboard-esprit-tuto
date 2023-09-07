@@ -8,7 +8,7 @@
   .pie-chart-container {
     display: flex;
     flex-direction: row;
-    background-color: rgba(172, 166, 214, 0.323);
+    background-color: rgba(7, 7, 7, 0.553);
     border-radius: 15px;
   }
   
@@ -17,5 +17,6 @@
   }
   .first-row {
     flex-direction: row;
-  }
+align-items: center;  }
+
 

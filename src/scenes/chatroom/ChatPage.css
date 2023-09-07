@@ -19,7 +19,7 @@ body {
   button{
     border: none;
     padding: 10px;
-    background: green;
+    background: rgba(85, 8, 8, 0.558);
     color:#fff;
     font-size: 1.2em;
     font-weight: bold;
@@ -93,13 +93,13 @@ body {
   }
   .member{
     padding: 10px;
-    background: #7c7878;
+    background: #4c4b4b;
     border:#000;
     cursor: pointer;
     margin: 5px 2px;
   }
   .member.active{
-    background: blueviolet;
+    background: rgb(56, 14, 14);
     color:#fff;
   }
   .member:hover{
@@ -115,7 +115,7 @@ body {
   }
   .avatar.self{
     color:#000;
-    background-color: greenyellow;
+    background-color: rgb(138, 113, 139);
   }
   .message{
     padding:5px;

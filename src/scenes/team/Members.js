@@ -163,10 +163,10 @@ function Members() {
               justifyContent="center"
               backgroundColor={
                 accessLevel === "manager"
-                  ? colors.greenAccent[600]
+                  ? colors.redAccent[800]
                   : accessLevel === "user"
-                  ? colors.greenAccent[700]
-                  : colors.greenAccent[700]
+                  ? colors.redAccent[700]
+                  : colors.redAccent[700]
               }
               borderRadius="4px"
             >
@@ -196,18 +196,18 @@ function Members() {
               borderBottom: "none",fontSize:"20px"
             },
             "& .name-column--cell": {
-              color: colors.greenAccent[300],
+              color: colors.redAccent[300],
             },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: colors.blueAccent[700],
+              backgroundColor: colors.grey[900],
               borderBottom: "none",fontSize:"20px"
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: colors.primary[400],
+              backgroundColor: colors.grey[700],
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: colors.blueAccent[700],
+              backgroundColor: colors.grey[900],
             },
             "& .MuiCheckbox-root": {
               color: `${colors.greenAccent[200]} !important`,
@@ -220,7 +220,6 @@ function Members() {
         <Dialog open={isMemberDialogOpen} onClose={handleMemberDialogClose}>
 <DialogTitle sx={{ textDecoration: "underline", fontSize: "15px" }}>Add New Member</DialogTitle>
         <DialogContent>
-          {/* Input fields for new member data */}
           <TextField
             label="Username"
             value={newMemberData.username}

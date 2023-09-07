@@ -1,23 +1,24 @@
 /* Styles for the notes box */
 .notes-box {
     width: 300px;
-    margin: 0 auto;
+    margin: 10% 45%;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #0000008e;
   }
   
   /* Styles for the header */
   .notes-header {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-top: -10px;
   }
   
   .notes-header h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: #fffafa;
+    
   }
   
   /* Styles for the content container */
@@ -32,7 +33,7 @@
   
   /* Styles for individual notes */
   .note {
-    color: #333;
+    color: #000000;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -46,8 +47,8 @@
   }
   
   .add-note button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #921010;
+    color: #ffffff;
     border: none;
     border-radius: 3px;
     padding: 5px 10px;
@@ -56,15 +57,15 @@
   }
   
   .add-note button:hover {
-    background-color: #0056b3;
+    background-color: #894141;
   }
   
   /* Styles for the User Selection Dialog */
   .user-dialog {
     color: #333;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 55%;
+    left: 65%;
     transform: translate(-50%, -50%);
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -87,14 +88,16 @@
     cursor: pointer;
     padding: 5px;
   }
-  
+  .user-dialog button {
+    background-color: #921010;
+  }
   .user-dialog li:hover {
     background-color: #f0f0f0;
   }
   
   /* Styles for the Note Input Dialog */
   .note-dialog {
-    color: #333;
+    color: #ffffff;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -118,7 +121,7 @@
   }
   
   .note-dialog button {
-    background-color: #007bff;
+    background-color: #7b7c7d;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -128,6 +131,6 @@
   }
   
   .note-dialog button:hover {
-    background-color: #0056b3;
+    background-color: #696969;
   }
   

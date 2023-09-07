@@ -31,7 +31,6 @@ function App() {
         <div className="app">
         <Sidebar/>
         <main className="content">
-        <Topbar/>
         <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/members" element={<Members />} />

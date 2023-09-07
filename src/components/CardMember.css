@@ -2,7 +2,7 @@
   position: relative;
 
     width: 220px;
-    background-color: #8794aa;
+    background-color: #161616;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px 15px;
@@ -43,14 +43,14 @@
   }
   
   .name {
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
   .tasks {
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 13px;
   }
   
@@ -81,7 +81,7 @@
   }
   
   .show-more-button:hover {
-    background-color: #0056b3;
+    background-color: #380e0e;
   }
   .no-tasks-text{
     font-weight: 600;

@@ -124,7 +124,7 @@ const NotesComponent = () => {
   return (
     <div className="notes-box">
       <div className="notes-header">
-        <h2>My Notes</h2>
+        <h2> Notes</h2>
       </div>
       <div className="notes-content">
         {notes.map((note, index) => (
@@ -148,6 +148,7 @@ const NotesComponent = () => {
               </li>
             ))}
           </ul>
+          
           <button onClick={handleCloseUserDialog}>Cancel</button>
         </div>
       )}

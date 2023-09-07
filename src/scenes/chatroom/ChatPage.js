@@ -2,6 +2,8 @@ import React, { useState ,useEffect} from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import "./ChatPage.css"
+import Header from "../../components/Header";
+import { Box } from "@mui/material";
 
 var stompClient = null;
 export default function Chatroom() {
@@ -209,7 +211,11 @@ useEffect(() => {
 
 
   return (
+    <Box m="20px ">
+
     <div className="chat-container">
+    <Header title="Chat room" />
+
       {userData.connected ? (
         <div className="chat-box">
           <div className="member-list">
@@ -292,5 +298,6 @@ useEffect(() => {
 
       )}
     </div>
+    </Box>
   );
 }

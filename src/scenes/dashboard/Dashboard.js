@@ -9,6 +9,7 @@ import MemberChart from "../../components/PieChart";
 import BarPage from "../barChart/BarPage";
 import Members from "../team/Members";
 import NotesComponent from "../../components/NotesComponent";
+import BarPageScnd from "../barChart/BarPageScnd";
 
 function Dashboard() {
   return (
@@ -28,8 +29,14 @@ function Dashboard() {
              
           </div>
       <div className="first-row">
-      <BarPage/>
-      <NotesComponent/>
+      <Grid container spacing={2}>
+      <Grid item xs={4}> 
+      <BarPageScnd className="smaller-width" />
+    </Grid>
+    <Grid item xs={8}> 
+      <NotesComponent />
+    </Grid>
+    </Grid>
       </div>
       
           

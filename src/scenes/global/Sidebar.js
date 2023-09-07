@@ -46,7 +46,7 @@ function Sidebar() {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.grey[800]} !important`,
+          background: `${colors.grey[900]} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -62,7 +62,7 @@ function Sidebar() {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}  style={{ height: "250vh" }}>
+      <ProSidebar collapsed={isCollapsed}  style={{ height: "150vh" }}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -164,14 +164,7 @@ function Sidebar() {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
+         
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -186,20 +179,7 @@ function Sidebar() {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Pie Chart"
-              to="/pie"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+          
            
           </Box>
         </Menu>
