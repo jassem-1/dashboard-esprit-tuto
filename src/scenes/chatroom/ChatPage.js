@@ -20,7 +20,6 @@ export default function Chatroom() {
   });
   const [tab, setTab] = useState("CHATROOM");
   useEffect(() => {
-    // Fetch member list from the backend API
     fetch("http://localhost:8080/users")
       .then((response) => response.json())
       .then((data) => {
@@ -43,7 +42,6 @@ export default function Chatroom() {
     stompClient = over(Sock);
   
     try {
-      // Send a POST request to mark the user as joined
       const response = await fetch(`http://localhost:8080/users/join-chatroom/${userData.username}`, {
         method: "POST",
       });
@@ -80,7 +78,6 @@ export default function Chatroom() {
       };
       stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
       
-      // Update the joinedMembers state without modifying the existing list
       setJoinedMembers((prevJoinedMembers) => [...prevJoinedMembers, userData.username]);
     }
   };
@@ -145,7 +142,6 @@ const sendPublicMessage = async () => {
 
       if (response.ok) {
         console.log("Message sent successfully");
-        // Update the publicChats state with the new message
         setPublicChats((prevChats) => [...prevChats, chatMessage]);
       } else {
         console.error("Failed to send message");

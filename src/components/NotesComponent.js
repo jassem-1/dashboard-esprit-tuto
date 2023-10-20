@@ -9,26 +9,22 @@ const NotesComponent = () => {
   const [isUserDialogOpen, setIsUserDialogOpen] = useState(false);
   const [isNoteDialogOpen, setIsNoteDialogOpen] = useState(false);
 
-  // Use refs to access the dialog elements
   const userDialogRef = useRef(null);
   const noteDialogRef = useRef(null);
 
   useEffect(() => {
-    // Fetch the list of users from your backend API when the component mounts
     fetchUsersFromBackend()
       .then(data => setUsers(data))
       .catch(error => console.error('Error fetching users:', error));
   }, []);
 
   useEffect(() => {
-    // Fetch the list of notes from your backend API when the component mounts
     fetchNotesFromBackend()
       .then(data => setNotes(data))
       .catch(error => console.error('Error fetching notes:', error));
   }, []);
 
   useEffect(() => {
-    // Add event listeners to close dialogs when clicking outside
     const handleClickOutside = (event) => {
       if (
         userDialogRef.current &&
@@ -49,7 +45,7 @@ const NotesComponent = () => {
 
   const fetchNotesFromBackend = async () => {
     try {
-      const response = await fetch('http://localhost:8080/notes'); // Replace with your API endpoint
+      const response = await fetch('http://localhost:8080/notes'); 
       if (!response.ok) {
         throw new Error('Failed to fetch notes');
       }
@@ -63,7 +59,7 @@ const NotesComponent = () => {
 
   const fetchUsersFromBackend = async () => {
     try {
-      const response = await fetch('http://localhost:8080/users'); // Replace with your API endpoint
+      const response = await fetch('http://localhost:8080/users'); 
       if (!response.ok) {
         throw new Error('Failed to fetch users');
       }
@@ -92,7 +88,6 @@ const NotesComponent = () => {
         content: newNote,
       };
 
-      // Make a POST request to save the note
       fetch('http://localhost:8080/notes', {
         method: 'POST',
         headers: {
@@ -102,7 +97,6 @@ const NotesComponent = () => {
       })
         .then(response => response.json())
         .then(savedNote => {
-          // Add the saved note to the notes state
           setNotes([...notes, savedNote]);
         })
         .catch(error => console.error('Error saving note:', error));
@@ -137,7 +131,6 @@ const NotesComponent = () => {
         <button onClick={handleAddNoteClick}>Add a Note</button>
       </div>
 
-      {/* User Selection Dialog */}
       {isUserDialogOpen && (
         <div className="user-dialog" ref={userDialogRef}>
           <h3>Select a User</h3>
@@ -153,7 +146,6 @@ const NotesComponent = () => {
         </div>
       )}
 
-      {/* Note Input Dialog */}
       {isNoteDialogOpen && (
         <div className="note-dialog" ref={noteDialogRef}>
           <h3>Add a Note for {selectedUser.name}</h3>

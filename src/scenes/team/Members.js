@@ -17,7 +17,6 @@ function Members() {
 
   function CustomToolbar({ onVerifyAdmin }) {
     const handleVerifyAdmin = () => {
-      // Call the onVerifyAdmin function to open the admin verification dialog
       onVerifyAdmin();
     };
     return (
@@ -97,8 +96,8 @@ function Members() {
   };
   const handleAddMember = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/users", newMemberData); // Replace with your API URL and appropriate endpoint
-      const newMember = response.data; // Assuming the response data is the newly added member object
+      const response = await axios.post("http://localhost:8080/users", newMemberData);
+      const newMember = response.data; 
       setUserData((prevData) => [...prevData, newMember]);
       handleMemberDialogClose();
     } catch (error) {
@@ -116,8 +115,8 @@ function Members() {
     const [userData, setUserData] = useState([]);
     const fetchUserData = async () => {
         try {
-          const response = await axios.get("http://localhost:8080/users"); // Replace with your API URL
-          setUserData(response.data); // Assuming the response data is an array of user objects
+          const response = await axios.get("http://localhost:8080/users"); 
+          setUserData(response.data); 
         } catch (error) {
           console.error("Error fetching user data:", error);
         }

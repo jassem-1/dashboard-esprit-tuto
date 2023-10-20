@@ -29,7 +29,7 @@ class TeamMembersPie extends Component {
 
                 this.setState({
                   pieChartData: [
-                    { name: 'Less than 3 Members', value: teamsWithMembersLessThanThree },
+                    { name: 'Teamms with less than 3 Members', value: teamsWithMembersLessThanThree },
                     { name: '4 to 7 Members', value: teamsWithMembersBetweenFourAndSeven },
                     { name: 'More than 7 Members', value: teamsWithMembersMoreThanSeven },
                   ],
@@ -76,7 +76,6 @@ class TeamMembersPie extends Component {
   }
 }
 
-// Helper function to get different colors for pie chart segments
 const getColor = (index) => {
   const colors = ['#FF69B4', '#4B0082', '#FF4500', '#00BFFF'];
   return colors[index % colors.length];

@@ -20,7 +20,6 @@ const ProjectCard = ({ projectId, onDelete }) => {
     setShowConfirmDialog(false);
   };
   useEffect(() => {
-    // Fetch available users from the backend and update the state
     fetch('http://localhost:8080/users/available')
       .then(response => response.json())
       .then(data => setAvailableUsers(data))
@@ -36,16 +35,14 @@ const ProjectCard = ({ projectId, onDelete }) => {
   };
 
   const handleTaskFormSubmit = ({ taskName, assigneeId, deadline, description }) => {
-    // Create a new task object
     const newTask = {
       name: taskName,
       description: description,
       deadline:deadline,
-      assignee: { id: assigneeId }, // Assign the task to the selected user
-      project: { id: projectId } // Associate the task with the current project
+      assignee: { id: assigneeId }, 
+      project: { id: projectId } 
     };
 
-    // Make a POST request to create the new task
     fetch('http://localhost:8080/tasks', {
       method: 'POST',
       headers: {
@@ -57,12 +54,11 @@ const ProjectCard = ({ projectId, onDelete }) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      // Refresh the project data to display the newly created task
       fetch(`http://localhost:8080/projects/${projectId}`)
       .then(response => response.json())
       .then(data => setProject(data))
       .catch(error => console.error('Error fetching project data:', error));
-      handleCloseTaskForm(); // Close the task form
+      handleCloseTaskForm(); 
     })
     .catch(error => console.error('Error creating task:', error));
   };
@@ -92,7 +88,6 @@ const ProjectCard = ({ projectId, onDelete }) => {
     return <div>Loading...</div>;
   }
   const handleDeleteProject = () => {
-    // Send a DELETE request to remove the project
     fetch(`http://localhost:8080/projects/${projectId}`, {
       method: 'DELETE',
     })

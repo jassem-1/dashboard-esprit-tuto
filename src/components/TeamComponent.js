@@ -15,13 +15,11 @@ function TeamComponent({ teamId }) {
 
 
   useEffect(() => {
-    // Fetch team data from the backend API using teamId
     fetch(`http://localhost:8080/teams/${teamId}`)
       .then(response => response.json())
       .then(data => setTeam(data))
       .catch(error => console.error('Error fetching team data:', error));
 
-// Fetch available users not already assigned to a team
 fetch(`http://localhost:8080/users/available`)
   .then(response => response.json())
   .then(data => setAvailableUsers(data))
@@ -42,20 +40,18 @@ fetch(`http://localhost:8080/users/available`)
   };
   const handleAddUserToTeam = () => {
     if (selectedUser) {
-      // Update the team's members list
       const updatedMembers = [...team.members, selectedUser];
       setTeam({ ...team, members: updatedMembers });
 
       fetch(`http://localhost:8080/teams/${teamId}/addUser/${selectedUser.id}`, {
-        method: 'POST', // This indicates that you want to perform a POST request
+        method: 'POST', 
         headers: {
-          'Content-Type': 'application/json', // Specify the content type
+          'Content-Type': 'application/json', 
         },
-        body: JSON.stringify(selectedUser), // Send the selectedUser data in the request body
+        body: JSON.stringify(selectedUser),
       })
         .then(response => response.json())
         .then(updatedTeamData => {
-          // You can optionally update the team data after successful POST
           setTeam(updatedTeamData);
         })
         .catch(error => console.error('Error adding user to team:', error));

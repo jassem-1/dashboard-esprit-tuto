@@ -50,7 +50,6 @@ function Calendar() {
             };
 
             try {
-                // Send the new event to the backend to save it in the database
                 const response = await axios.post("http://localhost:8080/events", newEvent);
 
                 const updatedAllEvents = [...currentEvents, response.data];
@@ -79,7 +78,6 @@ function Calendar() {
       
       selected.event.remove();
 
-      // Update the state after removing the event
       setCurrentEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );

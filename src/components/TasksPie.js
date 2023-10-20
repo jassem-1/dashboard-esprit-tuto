@@ -73,7 +73,6 @@ class TasksPie extends Component {
   }
 }
 
-// Helper function to get different colors for pie chart segments
 const getColor = (index) => {
   const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
   return colors[index % colors.length];

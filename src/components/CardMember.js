@@ -35,7 +35,6 @@ const CardMember = ({ userId , teamId }) => {
       const randomAvatarSrc = loadAvatarImage(randomAvatarIndex);
 
       const handleRemoveMember = () => {
-        // Send a DELETE request to remove the member from the team
         fetch(`http://localhost:8080/teams/${teamId}/removeMember/${userId}`, {
           method: 'DELETE'
         })
@@ -43,7 +42,6 @@ const CardMember = ({ userId , teamId }) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-          // If the removal is successful, update the user state to null
           setUser(null);
         })
         .catch(error => console.error('Error removing member:', error));

@@ -9,7 +9,6 @@ const BarPage = () => {
   const [chartData, setChartData] = useState([]);
   const maxCompletedTaskCount = Math.max(...chartData.map(data => data.data));
 
-  // Create an array of tick values from 0 to the maximum completed task count
   const tickValues = Array.from({ length: maxCompletedTaskCount + 3 }, (_, index) => index);
   useEffect(() => {
     fetchData();

@@ -1,7 +1,7 @@
 .team-members {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Create 4 columns */
-    gap: 20px; /* Gap between columns and rows */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
   }
   
   .member-card {

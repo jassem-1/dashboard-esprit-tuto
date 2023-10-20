@@ -8,18 +8,12 @@ import Dashboard from "./scenes/dashboard/Dashboard";
 import Sidebar from "./scenes/global/Sidebar";
 import Members from "./scenes/team/Members";
 import Calendar from "./scenes/calendar/Calendar";
-//import Invoices from "./scenes/invoices";
-//import Contacts from "./scenes/contacts";
+
 import BarPage from "./scenes/barChart/BarPage";
 import TeamsPage from "./scenes/team/TeamsPage";
 import ProjectsPage from "./scenes/projects/ProjectsPage";
 import ChatPage from "./scenes/chatroom/ChatPage";
-//import Form from "./scenes/form";
-//import Line from "./scenes/line";
-//import Pie from "./scenes/pie";
-//import FAQ from "./scenes/faq";
 
-//import Calendar from "./scenes/calendar/calendar";
 
 function App() {
 

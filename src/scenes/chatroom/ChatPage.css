@@ -56,7 +56,7 @@ body {
   
   .chat-content{
     flex: 1;
-    overflow: hidden; /* Hide overflow to prevent scrollbar outside the chat box */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     position: relative
@@ -64,7 +64,7 @@ body {
   
   .chat-messages{
     flex: 1;
-    overflow-y: auto; /* Enable vertical scrolling for the messages */
+    overflow-y: auto; 
     padding: 10px; 
     height: 80%;
     border: 1px solid #000;
